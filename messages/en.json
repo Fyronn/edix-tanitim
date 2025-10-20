@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "tech": "Technical",
+    "oem": "OEM Compatibility",
+    "docs": "Documents",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Power, Durability, Consistency.",
+    "subtitle": "Long-lasting, quiet power transfer with EDIX clutch discs.",
+    "cta": "Get a Quote",
+    "ctaSecondary": "Download Catalog"
+  },
+  "why": {
+    "title": "Why EDIX?",
+    "subtitle": "Industry-leading performance and reliability",
+    "heatResistance": {
+      "title": "High Heat Resistance",
+      "description": "Stable performance up to 850°C"
+    },
+    "longLife": {
+      "title": "Long Life",
+      "description": "Maximum service life with balanced wear"
+    },
+    "quiet": {
+      "title": "Quiet & Comfortable",
+      "description": "Minimized vibration and noise"
+    },
+    "consistent": {
+      "title": "Consistent Performance",
+      "description": "Reliable power transfer in all conditions"
+    }
+  },
+  "products": {
+    "title": "Product Family",
+    "subtitle": "Solutions for every need",
+    "viewAll": "View All Products"
+  },
+  "tech": {
+    "title": "Technical & Materials",
+    "subtitle": "Superior engineering and quality standards"
+  },
+  "oem": {
+    "title": "OEM Compatibility",
+    "subtitle": "Find the right disc for your vehicle",
+    "searchPlaceholder": "Search brand, model or OEM code...",
+    "search": "Search"
+  },
+  "certificates": {
+    "title": "Certificates & Catalog",
+    "subtitle": "International quality standards",
+    "download": "Download"
+  },
+  "testimonials": {
+    "title": "Customer References",
+    "subtitle": "Your trusted partner"
+  },
+  "cta": {
+    "title": "Get a Quote for Your Project",
+    "subtitle": "Our expert team is ready to provide customized solutions",
+    "button": "Get a Quote",
+    "whatsapp": "Contact via WhatsApp"
+  },
+  "footer": {
+    "description": "Your trusted solution partner in high-quality clutch disc manufacturing.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "We're here for your questions",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "company": "Company",
+    "message": "Your Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Your message has been sent successfully!",
+    "error": "An error occurred. Please try again."
+  }
+}

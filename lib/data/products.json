@@ -1,0 +1,53 @@
+[
+  {
+    "id": "standard-organic",
+    "name": {
+      "tr": "Standart Organik Balata",
+      "en": "Standard Organic Disc"
+    },
+    "description": {
+      "tr": "Günlük kullanım için ideal, yumuşak ve sessiz çalışma",
+      "en": "Ideal for daily use, smooth and quiet operation"
+    },
+    "category": "organic",
+    "specs": {
+      "maxTemp": "450°C",
+      "friction": "0.35-0.40",
+      "applications": ["passenger", "light-commercial"]
+    }
+  },
+  {
+    "id": "heavy-duty-ceramic",
+    "name": {
+      "tr": "Ağır Hizmet Seramik Balata",
+      "en": "Heavy Duty Ceramic Disc"
+    },
+    "description": {
+      "tr": "Yüksek yük kapasitesi, ticari araçlar için",
+      "en": "High load capacity for commercial vehicles"
+    },
+    "category": "ceramic",
+    "specs": {
+      "maxTemp": "850°C",
+      "friction": "0.40-0.45",
+      "applications": ["commercial", "heavy-duty"]
+    }
+  },
+  {
+    "id": "performance-kevlar",
+    "name": {
+      "tr": "Performans Kevlar Balata",
+      "en": "Performance Kevlar Disc"
+    },
+    "description": {
+      "tr": "Yüksek performans uygulamaları için geliştirilmiş",
+      "en": "Developed for high-performance applications"
+    },
+    "category": "kevlar",
+    "specs": {
+      "maxTemp": "650°C",
+      "friction": "0.38-0.43",
+      "applications": ["performance", "racing"]
+    }
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "products": "Ürünler",
+    "tech": "Teknik",
+    "oem": "OEM Uyumluluk",
+    "docs": "Dökümanlar",
+    "about": "Hakkımızda",
+    "contact": "İletişim"
+  },
+  "hero": {
+    "title": "Güç, Dayanıklılık, Tutarlılık.",
+    "subtitle": "EDIX baskı balataları ile uzun ömürlü ve sessiz aktarma.",
+    "cta": "Teklif Al",
+    "ctaSecondary": "Katalog İndir"
+  },
+  "why": {
+    "title": "Neden EDIX?",
+    "subtitle": "Endüstri lideri performans ve güvenilirlik",
+    "heatResistance": {
+      "title": "Yüksek Isı Dayanımı",
+      "description": "850°C'ye kadar stabil performans"
+    },
+    "longLife": {
+      "title": "Uzun Ömür",
+      "description": "Dengeli aşınma ile maksimum kullanım süresi"
+    },
+    "quiet": {
+      "title": "Sessiz & Konforlu",
+      "description": "Titreşim ve gürültü minimizasyonu"
+    },
+    "consistent": {
+      "title": "Tutarlı Performans",
+      "description": "Her koşulda güvenilir güç aktarımı"
+    }
+  },
+  "products": {
+    "title": "Ürün Ailesi",
+    "subtitle": "Her ihtiyaca uygun çözümler",
+    "viewAll": "Tüm Ürünleri Gör"
+  },
+  "tech": {
+    "title": "Teknik & Malzeme",
+    "subtitle": "Üstün mühendislik ve kalite standartları"
+  },
+  "oem": {
+    "title": "OEM Uyumluluk",
+    "subtitle": "Araç modelinize uygun balatayı bulun",
+    "searchPlaceholder": "Marka, model veya OEM kodu ara...",
+    "search": "Ara"
+  },
+  "certificates": {
+    "title": "Sertifikalar & Katalog",
+    "subtitle": "Uluslararası kalite standartları",
+    "download": "İndir"
+  },
+  "testimonials": {
+    "title": "Müşteri Referansları",
+    "subtitle": "Güvenilir iş ortağınız"
+  },
+  "cta": {
+    "title": "Projeniz İçin Teklif Alın",
+    "subtitle": "Uzman ekibimiz size özel çözümler sunmaya hazır",
+    "button": "Teklif Al",
+    "whatsapp": "WhatsApp ile İletişim"
+  },
+  "footer": {
+    "description": "Yüksek kaliteli baskı balataları üretiminde güvenilir çözüm ortağınız.",
+    "quickLinks": "Hızlı Bağlantılar",
+    "contact": "İletişim",
+    "followUs": "Bizi Takip Edin",
+    "rights": "Tüm hakları saklıdır."
+  },
+  "contact": {
+    "title": "İletişime Geçin",
+    "subtitle": "Sorularınız için buradayız",
+    "name": "Ad Soyad",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "company": "Şirket",
+    "message": "Mesajınız",
+    "send": "Gönder",
+    "sending": "Gönderiliyor...",
+    "success": "Mesajınız başarıyla gönderildi!",
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin."
+  }
+}

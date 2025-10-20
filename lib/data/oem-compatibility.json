@@ -1,0 +1,37 @@
+[
+  {
+    "brand": "Toyota",
+    "model": "Corolla",
+    "years": "2015-2023",
+    "oemCode": "31250-12110",
+    "edixCode": "EDX-TC-001"
+  },
+  {
+    "brand": "Ford",
+    "model": "Transit",
+    "years": "2014-2023",
+    "oemCode": "1679552",
+    "edixCode": "EDX-FT-002"
+  },
+  {
+    "brand": "Volkswagen",
+    "model": "Transporter",
+    "years": "2015-2023",
+    "oemCode": "02M141671",
+    "edixCode": "EDX-VT-003"
+  },
+  {
+    "brand": "Mercedes-Benz",
+    "model": "Sprinter",
+    "years": "2016-2023",
+    "oemCode": "A0002503903",
+    "edixCode": "EDX-MS-004"
+  },
+  {
+    "brand": "Renault",
+    "model": "Master",
+    "years": "2014-2023",
+    "oemCode": "302050031R",
+    "edixCode": "EDX-RM-005"
+  }
+]
