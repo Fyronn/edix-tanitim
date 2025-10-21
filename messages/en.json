@@ -41,7 +41,41 @@
   },
   "tech": {
     "title": "Technical & Materials",
-    "subtitle": "Superior engineering and quality standards"
+    "subtitle": "Superior engineering and quality standards",
+    "back": "Back",
+    "materialTechnologies": "Material Technologies",
+    "organicCompounds": "Organic Compounds",
+    "organicDescription": "Premium organic friction materials for smooth engagement and quiet operation",
+    "ceramicCompounds": "Ceramic Compounds",
+    "ceramicDescription": "High-temperature ceramic materials for heavy-duty applications",
+    "kevlarReinforced": "Kevlar Reinforced",
+    "kevlarDescription": "Advanced Kevlar-reinforced materials for performance applications",
+    "hybridTechnology": "Hybrid Technology",
+    "hybridDescription": "Combination of materials for optimal balance of performance and durability",
+    "temperature": "Temperature:",
+    "friction": "Friction:",
+    "bestFor": "Best for:",
+    "dailyDriving": "Daily driving",
+    "commercialVehicles": "Commercial vehicles",
+    "highPerformance": "High performance",
+    "allPurpose": "All-purpose",
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "faq1": {
+      "question": "What is the service life of EDIX clutch discs?",
+      "answer": "EDIX clutch discs are designed for extended service life, typically exceeding 100,000 km under normal operating conditions. Actual lifespan depends on driving habits, vehicle type, and maintenance practices."
+    },
+    "faq2": {
+      "question": "How do I choose the right clutch disc for my vehicle?",
+      "answer": "Selection depends on your vehicle type, usage pattern, and performance requirements. Use our OEM compatibility search or contact our technical team for personalized recommendations based on your specific needs."
+    },
+    "faq3": {
+      "question": "What quality standards do EDIX products meet?",
+      "answer": "All EDIX products are manufactured according to ISO 9001:2015 and IATF 16949 standards. We conduct rigorous dynamometer testing and quality control to ensure consistent performance and reliability."
+    },
+    "faq4": {
+      "question": "Can EDIX clutch discs handle high-temperature applications?",
+      "answer": "Yes, our ceramic and hybrid compounds are specifically designed for high-temperature applications, maintaining stable performance up to 850°C. This makes them ideal for heavy-duty commercial vehicles and demanding operating conditions."
+    }
   },
   "oem": {
     "title": "OEM Compatibility",
@@ -82,6 +116,45 @@
     "send": "Send",
     "sending": "Sending...",
     "success": "Your message has been sent successfully!",
-    "error": "An error occurred. Please try again."
+    "error": "An error occurred. Please try again.",
+    "back": "Back",
+    "contactUs": "Contact Us",
+    "getInTouch": "Get in touch with our team",
+    "contactInformation": "Contact Information",
+    "reachOut": "Reach out to us through any of these channels",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "whatsapp": "WhatsApp",
+    "contactUs": "Contact us",
+    "businessHours": "Business Hours",
+    "mondayFriday": "Monday - Friday:",
+    "saturday": "Saturday:",
+    "sunday": "Sunday:",
+    "closed": "Closed",
+    "sendMessage": "Send us a Message",
+    "fillForm": "Fill out the form below and we'll get back to you as soon as possible",
+    "namePlaceholder": "John Doe",
+    "emailPlaceholder": "john@example.com",
+    "phonePlaceholder": "+90 XXX XXX XX XX",
+    "companyPlaceholder": "Company Name",
+    "messagePlaceholder": "Your message..."
+  },
+  "about": {
+    "title": "About EDIX",
+    "subtitle": "Your trusted partner in clutch disc manufacturing",
+    "back": "Back",
+    "ourStory": "Our Story",
+    "storyText1": "EDIX has been at the forefront of clutch disc manufacturing, combining decades of expertise with cutting-edge technology to deliver products that set industry standards.",
+    "storyText2": "Our commitment to quality begins with the selection of premium materials and extends through every stage of production. Each clutch disc is manufactured using advanced processes and undergoes rigorous testing to ensure it meets our exacting standards.",
+    "storyText3": "Today, EDIX products are trusted by automotive professionals and vehicle owners worldwide, from passenger cars to heavy-duty commercial vehicles. Our success is built on a foundation of technical excellence, continuous innovation, and unwavering dedication to customer satisfaction.",
+    "ourMission": "Our Mission",
+    "missionDescription": "To provide the automotive industry with superior clutch disc solutions that exceed expectations in performance, durability, and reliability.",
+    "ourVision": "Our Vision",
+    "visionDescription": "To be the global leader in clutch disc manufacturing, recognized for innovation, quality, and customer satisfaction.",
+    "qualityCommitment": "Quality Commitment",
+    "qualityDescription": "Every EDIX product undergoes rigorous testing and quality control to ensure it meets the highest international standards.",
+    "customerFocus": "Customer Focus",
+    "customerDescription": "We work closely with our customers to understand their needs and provide tailored solutions that deliver real value."
   }
 }

@@ -9,58 +9,55 @@ import { Link } from "@/i18n/routing"
 import { ArrowLeft, Flame, Layers, Zap, Shield } from "lucide-react"
 import Image from "next/image"
 
-const materials = [
-  {
-    icon: Layers,
-    title: "Organic Compounds",
-    description: "Premium organic friction materials for smooth engagement and quiet operation",
-    specs: ["Temperature: up to 450°C", "Friction: 0.35-0.40 μ", "Best for: Daily driving"],
-  },
-  {
-    icon: Flame,
-    title: "Ceramic Compounds",
-    description: "High-temperature ceramic materials for heavy-duty applications",
-    specs: ["Temperature: up to 850°C", "Friction: 0.40-0.45 μ", "Best for: Commercial vehicles"],
-  },
-  {
-    icon: Zap,
-    title: "Kevlar Reinforced",
-    description: "Advanced Kevlar-reinforced materials for performance applications",
-    specs: ["Temperature: up to 650°C", "Friction: 0.38-0.43 μ", "Best for: High performance"],
-  },
-  {
-    icon: Shield,
-    title: "Hybrid Technology",
-    description: "Combination of materials for optimal balance of performance and durability",
-    specs: ["Temperature: up to 700°C", "Friction: 0.37-0.42 μ", "Best for: All-purpose"],
-  },
-]
-
-const faqs = [
-  {
-    question: "What is the service life of EDIX clutch discs?",
-    answer:
-      "EDIX clutch discs are designed for extended service life, typically exceeding 100,000 km under normal operating conditions. Actual lifespan depends on driving habits, vehicle type, and maintenance practices.",
-  },
-  {
-    question: "How do I choose the right clutch disc for my vehicle?",
-    answer:
-      "Selection depends on your vehicle type, usage pattern, and performance requirements. Use our OEM compatibility search or contact our technical team for personalized recommendations based on your specific needs.",
-  },
-  {
-    question: "What quality standards do EDIX products meet?",
-    answer:
-      "All EDIX products are manufactured according to ISO 9001:2015 and IATF 16949 standards. We conduct rigorous dynamometer testing and quality control to ensure consistent performance and reliability.",
-  },
-  {
-    question: "Can EDIX clutch discs handle high-temperature applications?",
-    answer:
-      "Yes, our ceramic and hybrid compounds are specifically designed for high-temperature applications, maintaining stable performance up to 850°C. This makes them ideal for heavy-duty commercial vehicles and demanding operating conditions.",
-  },
-]
 
 export function TechContent() {
   const t = useTranslations("tech")
+
+  const materials = [
+    {
+      icon: Layers,
+      title: t("organicCompounds"),
+      description: t("organicDescription"),
+      specs: [`${t("temperature")} up to 450°C`, `${t("friction")} 0.35-0.40 μ`, `${t("bestFor")} ${t("dailyDriving")}`],
+    },
+    {
+      icon: Flame,
+      title: t("ceramicCompounds"),
+      description: t("ceramicDescription"),
+      specs: [`${t("temperature")} up to 850°C`, `${t("friction")} 0.40-0.45 μ`, `${t("bestFor")} ${t("commercialVehicles")}`],
+    },
+    {
+      icon: Zap,
+      title: t("kevlarReinforced"),
+      description: t("kevlarDescription"),
+      specs: [`${t("temperature")} up to 650°C`, `${t("friction")} 0.38-0.43 μ`, `${t("bestFor")} ${t("highPerformance")}`],
+    },
+    {
+      icon: Shield,
+      title: t("hybridTechnology"),
+      description: t("hybridDescription"),
+      specs: [`${t("temperature")} up to 700°C`, `${t("friction")} 0.37-0.42 μ`, `${t("bestFor")} ${t("allPurpose")}`],
+    },
+  ]
+
+  const faqs = [
+    {
+      question: t("faq1.question"),
+      answer: t("faq1.answer"),
+    },
+    {
+      question: t("faq2.question"),
+      answer: t("faq2.answer"),
+    },
+    {
+      question: t("faq3.question"),
+      answer: t("faq3.answer"),
+    },
+    {
+      question: t("faq4.question"),
+      answer: t("faq4.answer"),
+    },
+  ]
 
   return (
     <div className="min-h-screen py-16">
@@ -75,7 +72,7 @@ export function TechContent() {
           <Button asChild variant="ghost" className="mb-4">
             <Link href="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back
+              {t("back")}
             </Link>
           </Button>
           <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t("title")}</h1>
@@ -106,7 +103,7 @@ export function TechContent() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-16"
         >
-          <h2 className="mb-8 text-3xl font-bold">Material Technologies</h2>
+          <h2 className="mb-8 text-3xl font-bold">{t("materialTechnologies")}</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {materials.map((material, index) => {
               const Icon = material.icon
@@ -149,7 +146,7 @@ export function TechContent() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mx-auto max-w-3xl"
         >
-          <h2 className="mb-8 text-3xl font-bold">Frequently Asked Questions</h2>
+          <h2 className="mb-8 text-3xl font-bold">{t("frequentlyAskedQuestions")}</h2>
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
               <AccordionItem key={index} value={`item-${index}`}>

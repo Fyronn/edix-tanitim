@@ -6,35 +6,34 @@ import { motion } from "framer-motion"
 import { Link } from "@/i18n/routing"
 import { ArrowLeft, Target, Eye, Award, Users } from "lucide-react"
 import Image from "next/image"
-
-const values = [
-  {
-    icon: Target,
-    title: "Our Mission",
-    description:
-      "To provide the automotive industry with superior clutch disc solutions that exceed expectations in performance, durability, and reliability.",
-  },
-  {
-    icon: Eye,
-    title: "Our Vision",
-    description:
-      "To be the global leader in clutch disc manufacturing, recognized for innovation, quality, and customer satisfaction.",
-  },
-  {
-    icon: Award,
-    title: "Quality Commitment",
-    description:
-      "Every EDIX product undergoes rigorous testing and quality control to ensure it meets the highest international standards.",
-  },
-  {
-    icon: Users,
-    title: "Customer Focus",
-    description:
-      "We work closely with our customers to understand their needs and provide tailored solutions that deliver real value.",
-  },
-]
+import { useTranslations } from "next-intl"
 
 export function AboutContent() {
+  const t = useTranslations("about")
+
+  const values = [
+    {
+      icon: Target,
+      title: t("ourMission"),
+      description: t("missionDescription"),
+    },
+    {
+      icon: Eye,
+      title: t("ourVision"),
+      description: t("visionDescription"),
+    },
+    {
+      icon: Award,
+      title: t("qualityCommitment"),
+      description: t("qualityDescription"),
+    },
+    {
+      icon: Users,
+      title: t("customerFocus"),
+      description: t("customerDescription"),
+    },
+  ]
+
   return (
     <div className="min-h-screen py-16">
       <div className="container mx-auto px-4">
@@ -48,11 +47,11 @@ export function AboutContent() {
           <Button asChild variant="ghost" className="mb-4">
             <Link href="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back
+              {t("back")}
             </Link>
           </Button>
-          <h1 className="mb-4 text-4xl font-bold md:text-5xl">About EDIX</h1>
-          <p className="text-lg text-muted-foreground">Your trusted partner in clutch disc manufacturing</p>
+          <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t("title")}</h1>
+          <p className="text-lg text-muted-foreground">{t("subtitle")}</p>
         </motion.div>
 
         {/* Hero Section */}
@@ -80,22 +79,11 @@ export function AboutContent() {
         >
           <Card>
             <CardContent className="p-8">
-              <h2 className="mb-4 text-2xl font-bold">Our Story</h2>
+              <h2 className="mb-4 text-2xl font-bold">{t("ourStory")}</h2>
               <div className="space-y-4 text-muted-foreground">
-                <p>
-                  EDIX has been at the forefront of clutch disc manufacturing, combining decades of expertise with
-                  cutting-edge technology to deliver products that set industry standards.
-                </p>
-                <p>
-                  Our commitment to quality begins with the selection of premium materials and extends through every
-                  stage of production. Each clutch disc is manufactured using advanced processes and undergoes rigorous
-                  testing to ensure it meets our exacting standards.
-                </p>
-                <p>
-                  Today, EDIX products are trusted by automotive professionals and vehicle owners worldwide, from
-                  passenger cars to heavy-duty commercial vehicles. Our success is built on a foundation of technical
-                  excellence, continuous innovation, and unwavering dedication to customer satisfaction.
-                </p>
+                <p>{t("storyText1")}</p>
+                <p>{t("storyText2")}</p>
+                <p>{t("storyText3")}</p>
               </div>
             </CardContent>
           </Card>

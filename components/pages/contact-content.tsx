@@ -6,35 +6,38 @@ import { motion } from "framer-motion"
 import { Link } from "@/i18n/routing"
 import { ArrowLeft, Mail, Phone, MapPin, MessageCircle } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
-
-const contactInfo = [
-  {
-    icon: Mail,
-    title: "Email",
-    value: "sales@edixclutchdisc.com",
-    link: "mailto:sales@edixclutchdisc.com",
-  },
-  {
-    icon: Phone,
-    title: "Phone",
-    value: "+90 XXX XXX XX XX",
-    link: "tel:+90XXXXXXXXXX",
-  },
-  {
-    icon: MapPin,
-    title: "Address",
-    value: "Istanbul, Turkey",
-    link: null,
-  },
-  {
-    icon: MessageCircle,
-    title: "WhatsApp",
-    value: "Contact us",
-    link: process.env.NEXT_PUBLIC_WHATSAPP_LINK || "https://wa.me/90XXXXXXXXXX",
-  },
-]
+import { useTranslations } from "next-intl"
 
 export function ContactContent() {
+  const t = useTranslations("contact")
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      title: t("email"),
+      value: "sales@edixclutchdisc.com",
+      link: "mailto:sales@edixclutchdisc.com",
+    },
+    {
+      icon: Phone,
+      title: t("phone"),
+      value: "+90 XXX XXX XX XX",
+      link: "tel:+90XXXXXXXXXX",
+    },
+    {
+      icon: MapPin,
+      title: t("address"),
+      value: "Istanbul, Turkey",
+      link: null,
+    },
+    {
+      icon: MessageCircle,
+      title: t("whatsapp"),
+      value: t("contactUs"),
+      link: process.env.NEXT_PUBLIC_WHATSAPP_LINK || "https://wa.me/90XXXXXXXXXX",
+    },
+  ]
+
   return (
     <div className="min-h-screen py-16">
       <div className="container mx-auto px-4">
@@ -48,11 +51,11 @@ export function ContactContent() {
           <Button asChild variant="ghost" className="mb-4">
             <Link href="/">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back
+              {t("back")}
             </Link>
           </Button>
-          <h1 className="mb-4 text-4xl font-bold md:text-5xl">Contact Us</h1>
-          <p className="text-lg text-muted-foreground">Get in touch with our team</p>
+          <h1 className="mb-4 text-4xl font-bold md:text-5xl">{t("contactUs")}</h1>
+          <p className="text-lg text-muted-foreground">{t("getInTouch")}</p>
         </motion.div>
 
         <div className="grid gap-8 lg:grid-cols-3">
@@ -65,8 +68,8 @@ export function ContactContent() {
           >
             <Card>
               <CardHeader>
-                <CardTitle>Contact Information</CardTitle>
-                <CardDescription>Reach out to us through any of these channels</CardDescription>
+                <CardTitle>{t("contactInformation")}</CardTitle>
+                <CardDescription>{t("reachOut")}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {contactInfo.map((info, index) => {
@@ -99,20 +102,20 @@ export function ContactContent() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Business Hours</CardTitle>
+                <CardTitle>{t("businessHours")}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Monday - Friday:</span>
+                  <span className="text-muted-foreground">{t("mondayFriday")}</span>
                   <span className="font-medium">9:00 AM - 6:00 PM</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Saturday:</span>
+                  <span className="text-muted-foreground">{t("saturday")}</span>
                   <span className="font-medium">9:00 AM - 1:00 PM</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Sunday:</span>
-                  <span className="font-medium">Closed</span>
+                  <span className="text-muted-foreground">{t("sunday")}</span>
+                  <span className="font-medium">{t("closed")}</span>
                 </div>
               </CardContent>
             </Card>
@@ -127,8 +130,8 @@ export function ContactContent() {
           >
             <Card>
               <CardHeader>
-                <CardTitle>Send us a Message</CardTitle>
-                <CardDescription>Fill out the form below and we'll get back to you as soon as possible</CardDescription>
+                <CardTitle>{t("sendMessage")}</CardTitle>
+                <CardDescription>{t("fillForm")}</CardDescription>
               </CardHeader>
               <CardContent>
                 <ContactForm />

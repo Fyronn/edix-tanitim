@@ -44,30 +44,30 @@ export function ContactForm() {
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="name">{t("name")}</Label>
-          <Input id="name" name="name" required placeholder="John Doe" />
+          <Input id="name" name="name" required placeholder={t("namePlaceholder")} />
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="email">{t("email")}</Label>
-          <Input id="email" name="email" type="email" required placeholder="john@example.com" />
+          <Input id="email" name="email" type="email" required placeholder={t("emailPlaceholder")} />
         </div>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="phone">{t("phone")}</Label>
-          <Input id="phone" name="phone" type="tel" placeholder="+90 XXX XXX XX XX" />
+          <Input id="phone" name="phone" type="tel" placeholder={t("phonePlaceholder")} />
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="company">{t("company")}</Label>
-          <Input id="company" name="company" placeholder="Company Name" />
+          <Input id="company" name="company" placeholder={t("companyPlaceholder")} />
         </div>
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="message">{t("message")}</Label>
-        <Textarea id="message" name="message" required placeholder="Your message..." rows={6} />
+        <Textarea id="message" name="message" required placeholder={t("messagePlaceholder")} rows={6} />
       </div>
 
       {message && (

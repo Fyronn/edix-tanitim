@@ -41,7 +41,41 @@
   },
   "tech": {
     "title": "Teknik & Malzeme",
-    "subtitle": "Üstün mühendislik ve kalite standartları"
+    "subtitle": "Üstün mühendislik ve kalite standartları",
+    "back": "Geri",
+    "materialTechnologies": "Malzeme Teknolojileri",
+    "organicCompounds": "Organik Bileşikler",
+    "organicDescription": "Pürüzsüz kavrama ve sessiz çalışma için premium organik sürtünme malzemeleri",
+    "ceramicCompounds": "Seramik Bileşikler",
+    "ceramicDescription": "Ağır hizmet uygulamaları için yüksek sıcaklık seramik malzemeleri",
+    "kevlarReinforced": "Kevlar Güçlendirilmiş",
+    "kevlarDescription": "Performans uygulamaları için gelişmiş Kevlar güçlendirilmiş malzemeler",
+    "hybridTechnology": "Hibrit Teknoloji",
+    "hybridDescription": "Performans ve dayanıklılık dengesi için malzeme kombinasyonu",
+    "temperature": "Sıcaklık:",
+    "friction": "Sürtünme:",
+    "bestFor": "En iyi:",
+    "dailyDriving": "Günlük sürüş",
+    "commercialVehicles": "Ticari araçlar",
+    "highPerformance": "Yüksek performans",
+    "allPurpose": "Çok amaçlı",
+    "frequentlyAskedQuestions": "Sık Sorulan Sorular",
+    "faq1": {
+      "question": "EDIX baskı balatalarının hizmet ömrü nedir?",
+      "answer": "EDIX baskı balataları uzun hizmet ömrü için tasarlanmıştır ve normal çalışma koşullarında tipik olarak 100.000 km'yi aşar. Gerçek ömür, sürüş alışkanlıkları, araç tipi ve bakım uygulamalarına bağlıdır."
+    },
+    "faq2": {
+      "question": "Aracım için doğru baskı balatasını nasıl seçerim?",
+      "answer": "Seçim, araç tipinize, kullanım şeklinize ve performans gereksinimlerinize bağlıdır. Özel ihtiyaçlarınıza göre kişiselleştirilmiş öneriler için OEM uyumluluk aramamızı kullanın veya teknik ekibimizle iletişime geçin."
+    },
+    "faq3": {
+      "question": "EDIX ürünleri hangi kalite standartlarını karşılar?",
+      "answer": "Tüm EDIX ürünleri ISO 9001:2015 ve IATF 16949 standartlarına göre üretilir. Tutarlı performans ve güvenilirlik sağlamak için sıkı dinamometre testleri ve kalite kontrolü yaparız."
+    },
+    "faq4": {
+      "question": "EDIX baskı balataları yüksek sıcaklık uygulamalarını kaldırabilir mi?",
+      "answer": "Evet, seramik ve hibrit bileşiklerimiz özellikle yüksek sıcaklık uygulamaları için tasarlanmıştır ve 850°C'ye kadar kararlı performans sergiler. Bu, onları ağır hizmet ticari araçlar ve zorlu çalışma koşulları için ideal kılar."
+    }
   },
   "oem": {
     "title": "OEM Uyumluluk",
@@ -82,6 +116,45 @@
     "send": "Gönder",
     "sending": "Gönderiliyor...",
     "success": "Mesajınız başarıyla gönderildi!",
-    "error": "Bir hata oluştu. Lütfen tekrar deneyin."
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "back": "Geri",
+    "contactUs": "İletişim",
+    "getInTouch": "Ekibimizle iletişime geçin",
+    "contactInformation": "İletişim Bilgileri",
+    "reachOut": "Bu kanallardan herhangi biriyle bize ulaşın",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "address": "Adres",
+    "whatsapp": "WhatsApp",
+    "contactUs": "Bize ulaşın",
+    "businessHours": "Çalışma Saatleri",
+    "mondayFriday": "Pazartesi - Cuma:",
+    "saturday": "Cumartesi:",
+    "sunday": "Pazar:",
+    "closed": "Kapalı",
+    "sendMessage": "Bize Mesaj Gönderin",
+    "fillForm": "Aşağıdaki formu doldurun, en kısa sürede size dönüş yapalım",
+    "namePlaceholder": "Ad Soyad",
+    "emailPlaceholder": "ornek@email.com",
+    "phonePlaceholder": "+90 XXX XXX XX XX",
+    "companyPlaceholder": "Şirket Adı",
+    "messagePlaceholder": "Mesajınız..."
+  },
+  "about": {
+    "title": "EDIX Hakkında",
+    "subtitle": "Baskı balatası üretiminde güvenilir iş ortağınız",
+    "back": "Geri",
+    "ourStory": "Hikayemiz",
+    "storyText1": "EDIX, onlarca yıllık uzmanlığı son teknoloji ile birleştirerek endüstri standartlarını belirleyen ürünler sunan baskı balatası üretiminde öncü konumdadır.",
+    "storyText2": "Kalite taahhüdümüz, premium malzemelerin seçimiyle başlar ve üretimin her aşamasına kadar uzanır. Her baskı balatası, gelişmiş süreçler kullanılarak üretilir ve titiz standartlarımızı karşıladığından emin olmak için sıkı testlerden geçer.",
+    "storyText3": "Bugün EDIX ürünleri, binek otomobillerden ağır hizmet ticari araçlara kadar dünya çapında otomotiv profesyonelleri ve araç sahipleri tarafından güvenilmektedir. Başarımız, teknik mükemmellik, sürekli yenilik ve müşteri memnuniyetine karşı sarsılmaz bağlılık temelinde inşa edilmiştir.",
+    "ourMission": "Misyonumuz",
+    "missionDescription": "Otomotiv endüstrisine performans, dayanıklılık ve güvenilirlik konularında beklentileri aşan üstün baskı balatası çözümleri sunmak.",
+    "ourVision": "Vizyonumuz",
+    "visionDescription": "Yenilik, kalite ve müşteri memnuniyeti ile tanınan baskı balatası üretiminde küresel lider olmak.",
+    "qualityCommitment": "Kalite Taahhüdü",
+    "qualityDescription": "Her EDIX ürünü, en yüksek uluslararası standartları karşıladığından emin olmak için sıkı testler ve kalite kontrolünden geçer.",
+    "customerFocus": "Müşteri Odaklılık",
+    "customerDescription": "Müşterilerimizin ihtiyaçlarını anlamak ve gerçek değer sunan özel çözümler sağlamak için müşterilerimizle yakın işbirliği yapıyoruz."
   }
 }
