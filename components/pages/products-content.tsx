@@ -72,7 +72,7 @@ export function ProductsContent() {
               <Card className="h-full transition-shadow hover:shadow-lg">
                 <div className="relative aspect-video overflow-hidden rounded-t-lg">
                   <Image
-                    src={`/.jpg?height=300&width=400&query=${product.category} clutch disc product`}
+                    src={product.image}
                     alt={product.name[locale as "tr" | "en"]}
                     fill
                     className="object-cover"

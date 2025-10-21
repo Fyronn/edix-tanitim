@@ -14,7 +14,8 @@
       "maxTemp": "450°C",
       "friction": "0.35-0.40",
       "applications": ["passenger", "light-commercial"]
-    }
+    },
+    "image":"/balata1.png"
   },
   {
     "id": "heavy-duty-ceramic",
@@ -31,7 +32,8 @@
       "maxTemp": "850°C",
       "friction": "0.40-0.45",
       "applications": ["commercial", "heavy-duty"]
-    }
+    },
+    "image":"/balata2.png"
   },
   {
     "id": "performance-kevlar",
@@ -48,6 +50,7 @@
       "maxTemp": "650°C",
       "friction": "0.38-0.43",
       "applications": ["performance", "racing"]
-    }
+    },
+    "image":"/balata3.png"
   }
 ]

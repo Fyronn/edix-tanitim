@@ -1,72 +1,298 @@
+// app/components/sections/hero-section.tsx
 "use client"
 
+import React from "react"
 import { useTranslations } from "next-intl"
 import { Button } from "@/components/ui/button"
 import { Link } from "@/i18n/routing"
 import { ArrowRight, Download } from "lucide-react"
-import { motion } from "framer-motion"
+import {
+  motion,
+  useReducedMotion,
+  useMotionValue,
+  useTransform,
+} from "framer-motion"
 import Image from "next/image"
 
+/** HERO (arka plan görselli, spotlight + parallax + particles + micro-interactions) */
 export function HeroSection() {
   const t = useTranslations("hero")
+  const reduce = useReducedMotion()
+
+  // Spotlight & parallax state
+  const sectionRef = React.useRef<HTMLElement>(null)
+  const [spot, setSpot] = React.useState({ x: 0.5, y: 0.5 })
+  const mx = useMotionValue(0) // -1..1
+  const my = useMotionValue(0)
+  const tx = useTransform(mx, [-1, 1], [-12, 12]) // parallax px
+  const ty = useTransform(my, [-1, 1], [-6, 6])
+
+  const onPointer = (e: React.MouseEvent | React.TouchEvent) => {
+    const el = sectionRef.current
+    if (!el) return
+    const r = el.getBoundingClientRect()
+    const clientX =
+      "touches" in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX
+    const clientY =
+      "touches" in e ? e.touches[0].clientY : (e as React.MouseEvent).clientY
+    const rx = (clientX - r.left) / r.width
+    const ry = (clientY - r.top) / r.height
+    const x = Math.min(1, Math.max(0, rx))
+    const y = Math.min(1, Math.max(0, ry))
+    setSpot({ x, y })
+    mx.set((x - 0.5) * 2)
+    my.set((y - 0.5) * 2)
+  }
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-black via-graphite to-black py-20 md:py-32">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-      </div>
+    <section
+      ref={sectionRef}
+      className="relative overflow-hidden"
+      onMouseMove={onPointer}
+      onTouchMove={onPointer}
+    >
+      {/* PARALLAX BACKGROUND */}
+      <motion.div
+        style={{ x: tx, y: ty }}
+        className="absolute inset-0 -z-10 will-change-transform"
+      >
+        <Image
+          src="/clutchmain3.jpeg" // public/hero-bg.jpg dosyanı ekle
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </motion.div>
 
-      <div className="container relative mx-auto px-4">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Content */}
+      {/* SPOTLIGHT OVERLAY (fare/touch merkezinde şeffaf pencere) */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10"
+        style={{
+          background: `
+            radial-gradient(
+              circle ${typeof window !== "undefined" && window.innerWidth < 768 ? "100px" : "200px"}
+              at ${spot.x * 100}% ${spot.y * 100}%,
+              rgba(255,255,255,0) 0%,
+              rgba(255,255,255,0) 60%,
+              rgba(255,255,255,0.32) 72%,
+              rgba(255,255,255,0.62) 100%
+            )
+          `,
+        }}
+      />
+
+      {/* İnce grid */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06]
+                   bg-[linear-gradient(to_right,#0f0f0f_1px,transparent_1px),linear-gradient(to_bottom,#0f0f0f_1px,transparent_1px)]
+                   bg-[size:56px_56px]"
+      />
+
+      {/* Kayan highlight şeridi */}
+      <motion.div
+        aria-hidden
+        initial={{ x: "-100%" }}
+        animate={reduce ? {} : { x: "100%" }}
+        transition={reduce ? {} : { repeat: Infinity, duration: 10, ease: "linear" }}
+        className="pointer-events-none absolute -top-24 left-0 -z-10 h-48 w-[140%] rotate-[-4deg]
+                   bg-gradient-to-r from-transparent via-white/35 to-transparent"
+      />
+
+      {/* Çok hafif partiküller */}
+      <ParticlesBG count={28} color="rgba(203,44,57,0.28)" />
+
+      {/* CONTENT */}
+      <div className="container mx-auto px-4 pt-24 pb-20 md:pt-32 md:pb-28">
+        <div className="mx-auto max-w-4xl text-center">
+          {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col justify-center space-y-6"
+            transition={{ duration: 0.4 }}
+            className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-zinc-700 shadow-sm"
           >
-            <h1 className="text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">{t("title")}</h1>
-            <p className="text-lg text-white/80 md:text-xl">{t("subtitle")}</p>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <Button asChild size="lg" className="bg-[#CB2C39] hover:bg-[#C22834]">
+            <span className="inline-block h-2 w-2 rounded-full bg-[#CB2C39]" />
+            {t("badge") || "Premium Clutch Disc & Plate"}
+          </motion.div>
+
+          {/* Title + shimmer */}
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+            className="relative mx-auto text-balance text-4xl font-semibold leading-tight text-[#111] md:text-5xl lg:text-6xl"
+          >
+            <span className="relative">
+              {t("title")}
+              <motion.span
+                aria-hidden
+                initial={false}
+                animate={reduce ? {} : { x: ["-120%", "120%"] }}
+                transition={{ repeat: Infinity, duration: 3.6, ease: "linear" }}
+                className="absolute inset-y-0 -left-1 w-20 skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/50 to-transparent"
+              />
+            </span>
+          </motion.h1>
+
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
+            className="mx-auto mt-4 max-w-[70ch] text-pretty text-lg text-zinc-700 md:text-xl"
+          >
+            {t("subtitle")}
+          </motion.p>
+
+          {/* Accent underline (animate in) */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+            className="mx-auto mt-6 h-1 w-16 origin-left rounded-full bg-[#CB2C39]"
+          />
+
+          {/* CTAs (micro-interactions) */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.15 }}
+            className="mx-auto mt-8 flex max-w-md flex-col gap-4 sm:flex-row sm:justify-center"
+          >
+            <motion.div whileHover={{ y: -2, boxShadow: "0 10px 24px rgba(203,44,57,.25)" }} whileTap={{ scale: 0.98 }}>
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-[#CB2C39] px-6 py-2.5 text-white ring-1 ring-red-500/20 transition hover:bg-[#C22834]"
+              >
                 <Link href="/contact">
                   {t("cta")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
+            </motion.div>
+
+            <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10 bg-transparent"
+                className="rounded-full border border-zinc-300 bg-white px-6 py-2.5 text-zinc-800 hover:bg-zinc-50"
               >
                 <Link href="/docs">
                   <Download className="mr-2 h-4 w-4" />
                   {t("ctaSecondary")}
                 </Link>
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* Image */}
+          {/* Scroll indicator */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative aspect-square lg:aspect-auto"
+            aria-hidden
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="mx-auto mt-14 h-10 w-6 rounded-full border-2 border-zinc-300"
           >
-            <Image
-              src="/modern-clutch-disc-product-photography-on-dark-bac.jpg"
-              alt="EDIX Clutch Disc"
-              fill
-              className="object-contain"
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
+            <motion.span
+              className="mx-auto mt-1 block h-2 w-1 rounded bg-zinc-400"
+              animate={reduce ? {} : { y: [0, 18, 0] }}
+              transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
             />
           </motion.div>
         </div>
       </div>
+
+      {/* soft bottom shadow */}
+      <div className="pointer-events-none h-10 w-full bg-gradient-to-b from-transparent to-black/5" />
     </section>
   )
 }
+
+/* ---------- TS-safe tiny canvas particles ---------- */
+function ParticlesBG({
+  count = 24,
+  color = "rgba(203,44,57,0.28)",
+}: {
+  count?: number
+  color?: string
+}) {
+  const canvasRef = React.useRef<HTMLCanvasElement | null>(null)
+  const reduce = useReducedMotion()
+
+  React.useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas || reduce) return
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    let frame = 0
+    const DPR = Math.min(window.devicePixelRatio || 1, 2)
+
+    const resize = () => {
+      const w = canvas.offsetWidth
+      const h = canvas.offsetHeight
+      canvas.width = Math.max(1, Math.floor(w * DPR))
+      canvas.height = Math.max(1, Math.floor(h * DPR))
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0)
+    }
+
+    resize()
+    window.addEventListener("resize", resize)
+
+    type P = { x: number; y: number; r: number; vx: number; vy: number }
+    const particles: P[] = Array.from({ length: count }, () => ({
+      x: Math.random() * canvas.offsetWidth,
+      y: Math.random() * canvas.offsetHeight,
+      r: Math.random() * 1.6 + 0.6,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25,
+    }))
+
+    const tick = () => {
+      const w = canvas.offsetWidth
+      const h = canvas.offsetHeight
+
+      ctx.clearRect(0, 0, w, h)
+      ctx.fillStyle = color
+
+      for (const p of particles) {
+        p.x += p.vx
+        p.y += p.vy
+        if (p.x < -10) p.x = w + 10
+        if (p.x > w + 10) p.x = -10
+        if (p.y < -10) p.y = h + 10
+        if (p.y > h + 10) p.y = -10
+
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
+        ctx.fill()
+      }
+
+      frame = requestAnimationFrame(tick)
+    }
+
+    frame = requestAnimationFrame(tick)
+
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener("resize", resize)
+    }
+  }, [count, color, reduce])
+
+  return (
+    <canvas
+      ref={canvasRef}
+      aria-hidden
+      className="absolute inset-0 -z-10 h-full w-full"
+    />
+  )
+}
+
+export default HeroSection
