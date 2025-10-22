@@ -14,20 +14,30 @@ import {
 } from "framer-motion"
 import Image from "next/image"
 
-/** HERO (arka plan görselli, spotlight + parallax + particles + micro-interactions) */
 export function HeroSection() {
   const t = useTranslations("hero")
   const reduce = useReducedMotion()
 
-  // Spotlight & parallax state
+  // ---- Mobil tespiti (≤767px): mobilde overlay kapalı
+  const [isMobile, setIsMobile] = React.useState(false)
+  React.useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)")
+    const set = () => setIsMobile(mq.matches)
+    set()
+    mq.addEventListener("change", set)
+    return () => mq.removeEventListener("change", set)
+  }, [])
+
+  // ---- Spotlight & parallax (sadece desktop)
   const sectionRef = React.useRef<HTMLElement>(null)
   const [spot, setSpot] = React.useState({ x: 0.5, y: 0.5 })
   const mx = useMotionValue(0) // -1..1
   const my = useMotionValue(0)
-  const tx = useTransform(mx, [-1, 1], [-12, 12]) // parallax px
+  const tx = useTransform(mx, [-1, 1], [-12, 12])
   const ty = useTransform(my, [-1, 1], [-6, 6])
 
-  const onPointer = (e: React.MouseEvent | React.TouchEvent) => {
+  function onPointer(e: React.MouseEvent | React.TouchEvent) {
+    if (isMobile) return
     const el = sectionRef.current
     if (!el) return
     const r = el.getBoundingClientRect()
@@ -52,12 +62,9 @@ export function HeroSection() {
       onTouchMove={onPointer}
     >
       {/* PARALLAX BACKGROUND */}
-      <motion.div
-        style={{ x: tx, y: ty }}
-        className="absolute inset-0 -z-10 will-change-transform"
-      >
+      <motion.div style={{ x: tx, y: ty }} className="absolute inset-0 -z-10">
         <Image
-          src="/clutchmain3.jpeg" // public/hero-bg.jpg dosyanı ekle
+          src="/clutchmain3.jpeg"
           alt=""
           fill
           priority
@@ -66,28 +73,30 @@ export function HeroSection() {
         />
       </motion.div>
 
-      {/* SPOTLIGHT OVERLAY (fare/touch merkezinde şeffaf pencere) */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10"
-        style={{
-          background: `
-            radial-gradient(
-              circle ${typeof window !== "undefined" && window.innerWidth < 768 ? "100px" : "200px"}
-              at ${spot.x * 100}% ${spot.y * 100}%,
-              rgba(255,255,255,0) 0%,
-              rgba(255,255,255,0) 60%,
-              rgba(255,255,255,0.32) 72%,
-              rgba(255,255,255,0.62) 100%
-            )
-          `,
-        }}
-      />
+      {/* SPOTLIGHT OVERLAY (desktop), mobilde devre dışı */}
+      {!isMobile && (
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10"
+          style={{
+            background: `
+              radial-gradient(
+                circle 260px
+                at ${spot.x * 100}% ${spot.y * 100}%,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0) 60%,
+                rgba(255,255,255,0.30) 72%,
+                rgba(255,255,255,0.58) 100%
+              )
+            `,
+          }}
+        />
+      )}
 
       {/* İnce grid */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06]
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.05]
                    bg-[linear-gradient(to_right,#0f0f0f_1px,transparent_1px),linear-gradient(to_bottom,#0f0f0f_1px,transparent_1px)]
                    bg-[size:56px_56px]"
       />
@@ -102,9 +111,6 @@ export function HeroSection() {
                    bg-gradient-to-r from-transparent via-white/35 to-transparent"
       />
 
-      {/* Çok hafif partiküller */}
-      <ParticlesBG count={28} color="rgba(203,44,57,0.28)" />
-
       {/* CONTENT */}
       <div className="container mx-auto px-4 pt-24 pb-20 md:pt-32 md:pb-28">
         <div className="mx-auto max-w-4xl text-center">
@@ -113,13 +119,13 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-medium text-zinc-700 shadow-sm"
+            className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/90 px-3 py-1 text-xs font-medium text-zinc-700 shadow-sm backdrop-blur-[2px]"
           >
             <span className="inline-block h-2 w-2 rounded-full bg-[#CB2C39]" />
             {t("badge") || "Premium Clutch Disc & Plate"}
           </motion.div>
 
-          {/* Title + shimmer */}
+          {/* Title */}
           <motion.h1
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,6 +134,7 @@ export function HeroSection() {
           >
             <span className="relative">
               {t("title")}
+              {/* shimmer */}
               <motion.span
                 aria-hidden
                 initial={false}
@@ -139,16 +146,16 @@ export function HeroSection() {
           </motion.h1>
 
           {/* Subtitle */}
-          <motion.p
+          {/* <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05 }}
             className="mx-auto mt-4 max-w-[70ch] text-pretty text-lg text-zinc-700 md:text-xl"
           >
             {t("subtitle")}
-          </motion.p>
+          </motion.p> */}
 
-          {/* Accent underline (animate in) */}
+          {/* Accent line */}
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
@@ -157,7 +164,7 @@ export function HeroSection() {
             className="mx-auto mt-6 h-1 w-16 origin-left rounded-full bg-[#CB2C39]"
           />
 
-          {/* CTAs (micro-interactions) */}
+          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -182,7 +189,7 @@ export function HeroSection() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="rounded-full border border-zinc-300 bg-white px-6 py-2.5 text-zinc-800 hover:bg-zinc-50"
+                className="rounded-full border border-zinc-300 bg-white/95 px-6 py-2.5 text-zinc-800 hover:bg-white"
               >
                 <Link href="/docs">
                   <Download className="mr-2 h-4 w-4" />
@@ -209,90 +216,8 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* soft bottom shadow */}
+      {/* bottom shadow */}
       <div className="pointer-events-none h-10 w-full bg-gradient-to-b from-transparent to-black/5" />
     </section>
   )
 }
-
-/* ---------- TS-safe tiny canvas particles ---------- */
-function ParticlesBG({
-  count = 24,
-  color = "rgba(203,44,57,0.28)",
-}: {
-  count?: number
-  color?: string
-}) {
-  const canvasRef = React.useRef<HTMLCanvasElement | null>(null)
-  const reduce = useReducedMotion()
-
-  React.useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas || reduce) return
-    const ctx = canvas.getContext("2d")
-    if (!ctx) return
-
-    let frame = 0
-    const DPR = Math.min(window.devicePixelRatio || 1, 2)
-
-    const resize = () => {
-      const w = canvas.offsetWidth
-      const h = canvas.offsetHeight
-      canvas.width = Math.max(1, Math.floor(w * DPR))
-      canvas.height = Math.max(1, Math.floor(h * DPR))
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0)
-    }
-
-    resize()
-    window.addEventListener("resize", resize)
-
-    type P = { x: number; y: number; r: number; vx: number; vy: number }
-    const particles: P[] = Array.from({ length: count }, () => ({
-      x: Math.random() * canvas.offsetWidth,
-      y: Math.random() * canvas.offsetHeight,
-      r: Math.random() * 1.6 + 0.6,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.25,
-    }))
-
-    const tick = () => {
-      const w = canvas.offsetWidth
-      const h = canvas.offsetHeight
-
-      ctx.clearRect(0, 0, w, h)
-      ctx.fillStyle = color
-
-      for (const p of particles) {
-        p.x += p.vx
-        p.y += p.vy
-        if (p.x < -10) p.x = w + 10
-        if (p.x > w + 10) p.x = -10
-        if (p.y < -10) p.y = h + 10
-        if (p.y > h + 10) p.y = -10
-
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fill()
-      }
-
-      frame = requestAnimationFrame(tick)
-    }
-
-    frame = requestAnimationFrame(tick)
-
-    return () => {
-      cancelAnimationFrame(frame)
-      window.removeEventListener("resize", resize)
-    }
-  }, [count, color, reduce])
-
-  return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden
-      className="absolute inset-0 -z-10 h-full w-full"
-    />
-  )
-}
-
-export default HeroSection
